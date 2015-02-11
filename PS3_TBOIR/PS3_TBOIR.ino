@@ -1,8 +1,11 @@
 int LED = 13;
+String cmd;
 
 void setup()
 {
 
+	Mouse.begin();
+	Keyboard.begin();
 	Serial1.begin(115200);
 
 
@@ -14,17 +17,16 @@ void setup()
 		digitalWrite(LED, LOW);
 		delay(1000);
 	}
-	Mouse.begin();
-	Keyboard.begin();
+
 }
 
-String cmd;
+
 
 void loop()
 {
 	while (Serial1.available())
 	{
-		char c = Serial1.peek();
+		char c = Serial1.read();
 		if (c == '\n')
 		{
 
